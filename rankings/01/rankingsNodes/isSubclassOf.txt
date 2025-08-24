@@ -1,0 +1,87 @@
+# RANKING DE NODOS PARA ETIQUETA: isSubclassOf
+# Total de nodos con conexiones salientes: 70
+# Formato: Posición,NodeID,Conexiones_Salientes
+# Generado automáticamente desde: MillenniumDB/data/ldbc/01/edges.txt
+# ============================================================
+
+1,tc0,1
+2,tc1,1
+3,tc2,1
+4,tc4,1
+5,tc5,1
+6,tc6,1
+7,tc7,1
+8,tc8,1
+9,tc9,1
+10,tc10,1
+11,tc11,1
+12,tc12,1
+13,tc13,1
+14,tc14,1
+15,tc15,1
+16,tc16,1
+17,tc17,1
+18,tc18,1
+19,tc19,1
+20,tc20,1
+21,tc21,1
+22,tc22,1
+23,tc23,1
+24,tc24,1
+25,tc25,1
+26,tc26,1
+27,tc27,1
+28,tc28,1
+29,tc29,1
+30,tc30,1
+31,tc31,1
+32,tc32,1
+33,tc33,1
+34,tc34,1
+35,tc35,1
+36,tc36,1
+37,tc37,1
+38,tc38,1
+39,tc39,1
+40,tc40,1
+41,tc41,1
+42,tc42,1
+43,tc43,1
+44,tc44,1
+45,tc45,1
+46,tc46,1
+47,tc47,1
+48,tc48,1
+49,tc49,1
+50,tc50,1
+51,tc51,1
+52,tc52,1
+53,tc53,1
+54,tc54,1
+55,tc55,1
+56,tc56,1
+57,tc57,1
+58,tc58,1
+59,tc59,1
+60,tc60,1
+61,tc61,1
+62,tc62,1
+63,tc63,1
+64,tc64,1
+65,tc65,1
+66,tc66,1
+67,tc67,1
+68,tc68,1
+69,tc69,1
+70,tc70,1
+
+# ESTADÍSTICAS
+# Total nodos: 70
+# Conexiones máximas: 1
+# Conexiones mínimas: 1
+# Conexiones promedio: 1.00
+# Mediana de conexiones: 1.0
+
+# NODOS SELECCIONADOS POR MODO (top 1):
+# Modo MIN:
+#   1. tc0 (pos 1, 1 conexiones)
