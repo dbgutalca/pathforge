@@ -97,7 +97,7 @@ cd pathforge
 cat MillenniumDB.tar.gz.* | tar -xz
 ```
 
-This will generate the `MillenniumDB` folder containing the version you need.
+This will generate the `MillenniumDB` folder containing the version needed.
 
 **If you still need to manually build from source** (not recommended):
 ```bash
@@ -141,20 +141,21 @@ Follow [LDBC-SNB DATAGEN instructions](https://github.com/ldbc/ldbc_snb_datagen_
 # For example, java csvParser.java social_network-csv_basic-sf0.1/
 java csvParser.java [LDBC_DB]
 
+# Create Quad Model
+python3 createQuadModel.py
+
 # After running csvParser.java, edges.txt and nodes.txt files are generated
 # Move edges.txt to the MillenniumDB data folder
 # Replace SCALE_FACTOR with your desired scale factor value
 # Examples: 01, 03, 1, 3, 10, etc
+mkdir MillenniumDB/data/ldbc/SCALE_FACTOR/
 mv edges.txt MillenniumDB/data/ldbc/SCALE_FACTOR/
-
-# Create Quad Model
-python3 createQuadModel.py
 
 # Import to MillenniumDB
 cd MillenniumDB
 # Replace SCALE_FACTOR with your desired scale factor value
 # Examples: 01, 03, 1, 3, 10, etc
-build/Release/bin/mdb import ../NEW_DB.qm $PWD/data/db/SCALE_FACTOR
+build/Release/bin/mdb-import ../NEW_DB.qm $PWD/data/db/SCALE_FACTOR
 ```
 
 **Important**: Replace `SCALE_FACTOR` with your actual scale factor value (01, 03, 1, 3, 10, etc.).
@@ -206,6 +207,7 @@ python3 pathGenerator.py --use-rankings 03 --aq 5 --tq 2 --rq 3 \
 --node-selection-mode max --file-expressions language-expressions.xlsx
 ```
 Note: An example file gql.xlsx is provided to demonstrate the required format and structure.
+Replace language-expressions.xlsx with gql.xlsx to execute the generator with this example file.
 
 ## Configuration Examples
 
