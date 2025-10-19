@@ -89,6 +89,17 @@ cd pathforge
 ```
 
 ### 2. Install MillenniumDB
+
+**Note**: The original MillenniumDB repository has been updated and is no longer recommended. Instead, use the database version that comes with PathForge.
+
+**To extract the MillenniumDB version**:
+```bash
+cat MillenniumDB.tar.gz.* | tar -xz
+```
+
+This will generate the `MillenniumDB` folder containing the version you need.
+
+**If you still need to manually build from source** (not recommended):
 ```bash
 sudo locale-gen en_US.UTF-8
 git clone https://github.com/MillenniumDB/MillenniumDB.git
@@ -103,27 +114,51 @@ cmake -Bbuild/Release -DCMAKE_BUILD_TYPE=Release
 cmake --build build/Release/ -j $(nproc)
 ```
 
+
 ### 3. Prepare LDBC-SNB Database
 
 #### Option A: Download Pre-compiled Dataset
-Download from
+Download from:
+
+```bash
+https://drive.google.com/file/d/1XRHg34c-AceuiTdkAekLr8K7TMei_3Ui/view?usp=drive_link
+https://drive.google.com/file/d/1fH5gTaw1khLvjr5VNCYKFBlVMW66zhYr/view?usp=drive_link
+https://drive.google.com/file/d/1qW0HYn07cn1pAyNVgDB3yJN4nvo0nzJ1/view?usp=drive_link
+https://drive.google.com/file/d/1vg1doV7qo_h45NpGWL2NYR4g2FSKr14m/view?usp=drive_link
+```
+
 
 #### Option B: Generate Using DATAGEN
-Follow [LDBC-SNB DATAGEN instructions](https://github.com/ldbc/ldbc_snb_datagen_spark) to generate custom scale factors.
+Follow [LDBC-SNB DATAGEN instructions](https://github.com/ldbc/ldbc_snb_datagen_spark) to generate custom datasets.
+
+#### Option C: Use the default dataset included in the repository
+/social_network-csv_basic-sf0.1/
 
 ### 4. Process Database Files
 ```bash
 # Process CSV files (outside the CSV folder)
 # You should replace [LDBC_DB] with the folder of the LDBC
+# For example, java csvParser.java social_network-csv_basic-sf0.1/
 java csvParser.java [LDBC_DB]
+
+# After running csvParser.java, edges.txt and nodes.txt files are generated
+# Move edges.txt to the MillenniumDB data folder
+# Replace SCALE_FACTOR with your desired scale factor value
+# Examples: 01, 03, 1, 3, 10, etc
+mv edges.txt MillenniumDB/data/ldbc/SCALE_FACTOR/
 
 # Create Quad Model
 python3 createQuadModel.py
 
 # Import to MillenniumDB
 cd MillenniumDB
-build/Release/bin/mdb-import NEW_DB.QM /data/db/SCALE_FACTOR
+# Replace SCALE_FACTOR with your desired scale factor value
+# Examples: 01, 03, 1, 3, 10, etc
+build/Release/bin/mdb import ../NEW_DB.qm $PWD/data/db/SCALE_FACTOR
 ```
+
+**Important**: Replace `SCALE_FACTOR` with your actual scale factor value (01, 03, 1, 3, 10, etc.).
+
 
 ## Usage
 
@@ -141,7 +176,7 @@ Generate custom rankings with full configurability:
 
 ```bash
 python3 pathAnalyzer.py --nodes-per-label 3 \
---node-selection-mode max+med --db-path ./data/db/03
+--node-selection-mode max+med --db-path ./MillenniumDB/data/db/03
 ```
 
 **Parameters:**
