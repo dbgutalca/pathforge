@@ -90,10 +90,11 @@ cd pathforge
 
 ### 2. Install MillenniumDB
 
-**Note**: The original MillenniumDB repository has been updated and is no longer recommended due to conflicts with PathForge and the new MillenniumDB version. Instead, use the database version that comes with PathForge.
+**Note**: The MillenniumDB repository has been updated and this new version is no longer recommended due to conflicts with PathForge. Instead, use the database version that comes with PathForge.
 
 **To extract the MillenniumDB version**:
 ```bash
+# In the root directory
 cat MillenniumDB.tar.gz.* | tar -xz
 ```
 
